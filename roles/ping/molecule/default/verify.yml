@@ -1,0 +1,12 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Verify OS distribution is 'Debian'
+      assert:
+        that: ansible_os_family == 'Debian'
+        fail_msg: "OS distribution must be 'Debian' to use with Raspberry Pi"
+        success_msg: "OS distribution matches requirements of Raspberry Pi"
