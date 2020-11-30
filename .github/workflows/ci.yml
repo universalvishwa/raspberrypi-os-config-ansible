@@ -16,18 +16,18 @@
             - debian10
             - ubuntu2004
       steps:
-        - name: Check out the codebase.
+        - name: Check out the codebase
           uses: actions/checkout@v2
   
-        - name: Set up Python 3.
+        - name: Set up Python 3
           uses: actions/setup-python@v2
           with:
             python-version: '3.x'
   
-        - name: Install test dependencies.
+        - name: Install test dependencies
           run: pip3 install -r requirements.txt
   
-        - name: Run Molecule tests.
+        - name: Run Molecule tests
           run: |
             cd roles/ping
             molecule test

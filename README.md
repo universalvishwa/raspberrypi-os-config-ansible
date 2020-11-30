@@ -9,8 +9,8 @@
 - This work is done as part of a Hobby project on setting up an IoT Stack in a Home network.
 
 ## Ansible Roles
-1. ansible_ping:
-    - This role is used to validate connectivity to Raspberry Pi
+1. **ping**:
+    - This role is used to validate connectivity to Raspberry Pi.
 
 
 ## References
