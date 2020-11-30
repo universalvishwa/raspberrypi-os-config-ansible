@@ -1,0 +1,10 @@
+---
+# tasks file for ping
+- name: Ping hosts
+  ping: ~
+  tags: [ping]
+
+# - setup:
+#   register: rasp_env
+
+# - debug: msg="{{ ansible_os_family }}"

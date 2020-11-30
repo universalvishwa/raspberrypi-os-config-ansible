@@ -1,0 +1,19 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ansible_ver: 2.10.3
+  pre_tasks:
+    - name: Verify minimum Ansible version requirements.
+      assert:
+        that: "ansible_version.full is version_compare('{{ ansible_ver }}', '>=')"
+        msg: "Supported minimum Ansible version is {{ ansible_ver }}."
+    - name: Update apt cache for Debian
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == 'Debian'
+  tasks:
+    - name: "Include ping"
+      include_role:
+        name: "ping"
