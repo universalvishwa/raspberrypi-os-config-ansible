@@ -14,7 +14,7 @@
         matrix:
           distro:
             - debian10
-            - ubuntu2004
+            # - ubuntu2004
       steps:
         - name: Check out the codebase.
           uses: actions/checkout@v2
