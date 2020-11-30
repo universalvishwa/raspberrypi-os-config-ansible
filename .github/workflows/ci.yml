@@ -14,7 +14,7 @@
         matrix:
           distro:
             - debian10
-            # - ubuntu2004
+            - ubuntu2004
       steps:
         - name: Check out the codebase.
           uses: actions/checkout@v2
@@ -29,7 +29,7 @@
   
         - name: Run Molecule tests.
           run: |
-            cd role/ping
+            cd roles/ping
             molecule test
           env:
             PY_COLORS: '1'
