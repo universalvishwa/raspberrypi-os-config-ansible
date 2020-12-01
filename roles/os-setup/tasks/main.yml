@@ -1,0 +1,18 @@
+---
+# tasks file for os-setup
+- name: Configure power saver settings
+  become: yes
+  block:
+    - name: Check power saving mode status
+      command: iw dev wlan0 get power_save
+      register: power_saver_status
+
+    - name: Disable power saving mode (OFF)
+      command: iw dev wlan0 set power_save off
+      when: power_saver_status.stdout | regex_search('(on)')
+      register: power_saver_off
+  when: disable_power_saver
+
+- name: Check Wifi connection script
+  include: checkwifi.yml
+  when: check_wifi_cron
