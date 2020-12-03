@@ -17,7 +17,8 @@
     project_src: "{{ docker_compose_app_path }}"
   register: docker_compose_up_output
 
-- ansible.builtin.debug:
+- name: Debug output for docker_compose_up
+  ansible.builtin.debug:
     var: docker_compose_up_output
   when: debug
 
@@ -27,11 +28,13 @@
     build: no
   register: docker_compose_up_output
 
-- ansible.builtin.debug:
+- name: Debug output for `docker compose up`
+  ansible.builtin.debug:
     var: docker_compose_up_output
   when: debug
 
-- ansible.builtin.assert:
+- name: Check if Docker compose redeployed `during docker compose up`
+  ansible.builtin.assert:
     that: not docker_compose_up_output.changed
 
 - name: Stop all Docker containers
@@ -41,11 +44,13 @@
     stopped: yes
   register: docker_compose_stop_output
 
-- ansible.builtin.debug:
+- name: Debug output for `docker compose stop`
+  ansible.builtin.debug:
     var: docker_compose_stop_output
   when: debug
 
-- ansible.builtin.assert:
+- name: Check if containers of Docker compose application is stopped
+  ansible.builtin.assert:
     that: not docker_compose_stop_output.services.webapp.webapp.state.running
 
 - name: Restart Docker compose app
@@ -55,9 +60,11 @@
     restarted: yes
   register: docker_compose_restart_output
 
-- ansible.builtin.debug:
+- name: Debug output for `docker compose restart`
+  ansible.builtin.debug:
     var: docker_compose_restart_output
   when: debug
 
-- ansible.builtin.assert:
+- name: Check if containers of Docker compose application is restarted
+  ansible.builtin.assert:
     that: docker_compose_restart_output.services.webapp.webapp.state.running
