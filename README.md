@@ -14,6 +14,8 @@
 ## Ansible Roles
 1. **ping**:
     - This role is used to validate connectivity to Raspberry Pi.
+2. **docker**:
+    - Install Docker and Docker Compose in `Armv7` or `Arm64` architectures.
 3. **os-config**:
     - Disable power saving mode
     - Check WiFi: Detect WiFi connection loss and restart the network service.
@@ -28,8 +30,6 @@
     $ ansible-playbook -i hosts playbook.yml -l rpi
     ```
 
-
-
 ## References
 - [Ansible Molecule Testing](https://github.com/universalvishwa/ansible-molecule-testing)
 - [geerlingguy.ansible-role-docker_arm](https://github.com/geerlingguy/ansible-role-docker_arm)
@@ -38,6 +38,3 @@
 - [dockerpi](https://github.com/lukechilds/dockerpi)
 - [Does Your Raspberry Pi 3 Lose WiFi Connections After a While](http://qdosmsq.dunbar-it.co.uk/blog/2016/03/does-your-raspberry-pi-3-lose-wifi-connections-after-a-while/)
 - [Rebooting the Raspberry Pi when it loses wireless connection](https://weworkweplay.com/play/rebooting-the-raspberry-pi-when-it-loses-wireless-connection-wifi/)
-- https://www.digitalocean.com/community/tutorials/how-to-configure-a-continuous-integration-testing-environment-with-docker-and-docker-compose-on-ubuntu-14-04
-- https://www.digitalocean.com/community/tutorials/how-to-configure-a-continuous-integration-testing-environment-with-docker-and-docker-compose-on-ubuntu-16-04
-- (https://www.educative.io/blog/docker-compose-tutorial)

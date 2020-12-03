@@ -15,18 +15,7 @@
         that: ansible_os_family == 'Debian'
         fail_msg: "OS distribution must be 'Debian' to use with Raspberry Pi"
         success_msg: "OS distribution matches requirements of Raspberry Pi"
-    # - name: Create a Hello-world container
-    #   community.docker.docker_container:
-    #     name: helloworld
-    #     image: hello-world
-    # - name: Stop a container
-    #   community.docker.docker_container:
-    #     name: helloworld
-    #     state: stopped
-    # - name: Remove container
-    #   community.docker.docker_container:
-    #     name: helloworld
-    #     state: absent
+
     - name: Verify Docker
       import_tasks: tests/verify_docker.yml
 

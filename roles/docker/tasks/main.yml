@@ -48,6 +48,7 @@
   when: install_docker_compose
 
 - name: Add Raspberry Pi user permission to run Docker commands
+  become: yes
   user:
     name: "{{ item }}"
     groups: docker
