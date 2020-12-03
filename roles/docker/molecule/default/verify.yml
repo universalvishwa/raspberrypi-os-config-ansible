@@ -27,7 +27,7 @@
     #   community.docker.docker_container:
     #     name: helloworld
     #     state: absent
-    - name: Verify Docker 
+    - name: Verify Docker
       import_tasks: tests/verify_docker.yml
 
     - name: Verify Docker Compose
