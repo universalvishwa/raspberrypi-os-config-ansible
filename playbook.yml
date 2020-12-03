@@ -1,7 +1,6 @@
 ---
   - name: Configure Raspberry Pi
     hosts: all
-    # become: yes
     vars:
       ansible_ver: 2.10.3
     pre_tasks:
@@ -15,11 +14,6 @@
           update_cache: yes
           cache_valid_time: 3600
         when: ansible_os_family == 'Debian'
-      # - setup:
-      #   register: avars
-      # - debug: var=avars
-    # vars_files:
-    #   - secrets.yml
     roles:
       - os-setup
-    #   - docker
+      - docker

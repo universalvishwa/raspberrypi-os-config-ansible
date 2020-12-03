@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  webapp:
+    image: centos/httpd
+    container_name: webapp
+    ports:
+      - "80:80"
+    volumes:
+      - ./website:/var/www/html

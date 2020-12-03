@@ -26,11 +26,18 @@
   
         - name: Install test dependencies
           run: pip3 install -r requirements.txt
-  
-        - name: Run Molecule tests
-          run: |
-            cd roles/ping
-            molecule test
+
+        - name: Run Molecule tests for 'ping' role
+          working-directory: ./roles/ping
+          run: molecule test
+          env:
+            PY_COLORS: '1'
+            ANSIBLE_FORCE_COLOR: '1'
+            MOLECULE_DISTRO: ${{ matrix.distro }}
+
+        - name: Run Molecule tests for 'docker' role
+          working-directory: ./roles/docker
+          run: molecule test
           env:
             PY_COLORS: '1'
             ANSIBLE_FORCE_COLOR: '1'

@@ -32,8 +32,12 @@
 
 ## References
 - [Ansible Molecule Testing](https://github.com/universalvishwa/ansible-molecule-testing)
-- https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl
-- https://pimylifeup.com/raspberry-pi-docker/
-- https://github.com/lukechilds/dockerpi
+- [geerlingguy.ansible-role-docker_arm](https://github.com/geerlingguy/ansible-role-docker_arm)
+- [Installing Docker and Docker Compose on the Raspberry Pi in 5 Simple Steps](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
+- [Installing Docker on the Raspberry Pi](https://pimylifeup.com/raspberry-pi-docker/)
+- [dockerpi](https://github.com/lukechilds/dockerpi)
 - [Does Your Raspberry Pi 3 Lose WiFi Connections After a While](http://qdosmsq.dunbar-it.co.uk/blog/2016/03/does-your-raspberry-pi-3-lose-wifi-connections-after-a-while/)
 - [Rebooting the Raspberry Pi when it loses wireless connection](https://weworkweplay.com/play/rebooting-the-raspberry-pi-when-it-loses-wireless-connection-wifi/)
+- https://www.digitalocean.com/community/tutorials/how-to-configure-a-continuous-integration-testing-environment-with-docker-and-docker-compose-on-ubuntu-14-04
+- https://www.digitalocean.com/community/tutorials/how-to-configure-a-continuous-integration-testing-environment-with-docker-and-docker-compose-on-ubuntu-16-04
+- (https://www.educative.io/blog/docker-compose-tutorial)

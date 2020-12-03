@@ -1,0 +1,10 @@
+---
+# defaults file for docker
+# Whether to install Docker Compose via Pip.
+install_docker_compose: true
+
+# A list of users who will be added to the docker group.
+docker_users: ['pi']
+
+# The executable to use for Pip.
+docker_pip_executable: pip3

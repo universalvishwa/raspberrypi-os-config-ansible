@@ -1,0 +1,55 @@
+---
+- name: Gather the package facts
+  package_facts:
+    manager: auto
+
+- name: Print the package facts
+  debug:
+    var: ansible_facts.packages['docker-ce']
+
+- name: Check if 'Docker' is installed
+  debug:
+    msg: "{{ ansible_facts.packages['docker-ce'] | length }} versions of 'docker-ce' are installed!"
+  when: "'docker-ce' in ansible_facts.packages"
+
+- name: Install dependencies for Ubuntu
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - gpg-agent
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Download Docker install convenience script
+  get_url:
+    url: https://get.docker.com/
+    dest: /tmp/get-docker.sh
+    mode: 0775
+  when: "'docker-ce' not in ansible_facts.packages"
+
+- name: Run Docker install convenience script
+  command: /tmp/get-docker.sh
+  environment:
+    CHANNEL: stable
+  when: "'docker-ce' not in ansible_facts.packages"
+
+- name: Enable and start Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  tags: [docker, install]
+
+- name: Install Docker Compose using Pip
+  pip:
+    name: docker-compose
+    state: present
+    executable: "{{ docker_pip_executable }}"
+  when: install_docker_compose
+
+- name: Add Raspberry Pi user permission to run Docker commands
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: true
+  loop: "{{ docker_users }}"
