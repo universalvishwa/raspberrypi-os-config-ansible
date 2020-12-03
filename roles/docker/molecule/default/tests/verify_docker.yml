@@ -14,4 +14,3 @@
   community.docker.docker_container:
     name: helloworld
     state: absent
-  
