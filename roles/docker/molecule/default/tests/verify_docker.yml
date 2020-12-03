@@ -1,0 +1,16 @@
+---
+# Playbook to verify docker
+- name: Create a Hello-world container
+  community.docker.docker_container:
+    name: helloworld
+    image: hello-world
+
+- name: Stop a container
+  community.docker.docker_container:
+    name: helloworld
+    state: stopped
+
+- name: Remove container
+  community.docker.docker_container:
+    name: helloworld
+    state: absent

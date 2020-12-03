@@ -1,0 +1,70 @@
+---
+# Playbook to verify docker compose
+- name: Copy compose source templates
+  template:
+    src: webapp/docker-compose.yml
+    dest: "{{ docker_compose_app_path }}/"
+    mode: 0600
+
+- name: Copy index.html to run Webapp
+  copy:
+    src: webapp/website/index.html
+    dest: "{{ docker_compose_app_path }}/website/"
+    mode: 0644
+
+- name: Create and start Docker Compose app
+  community.docker.docker_compose:
+    project_src: "{{ docker_compose_app_path }}"
+  register: docker_compose_up_output
+
+- name: Debug output for docker_compose_up
+  ansible.builtin.debug:
+    var: docker_compose_up_output
+  when: debug
+
+- name: Run `docker-compose up` again
+  community.docker.docker_compose:
+    project_src: "{{ docker_compose_app_path }}"
+    build: no
+  register: docker_compose_up_output
+
+- name: Debug output for `docker compose up`
+  ansible.builtin.debug:
+    var: docker_compose_up_output
+  when: debug
+
+- name: Check if Docker compose redeployed `during docker compose up`
+  ansible.builtin.assert:
+    that: not docker_compose_up_output.changed
+
+- name: Stop all Docker containers
+  community.docker.docker_compose:
+    project_src: "{{ docker_compose_app_path }}"
+    build: no
+    stopped: yes
+  register: docker_compose_stop_output
+
+- name: Debug output for `docker compose stop`
+  ansible.builtin.debug:
+    var: docker_compose_stop_output
+  when: debug
+
+- name: Check if containers of Docker compose application is stopped
+  ansible.builtin.assert:
+    that: not docker_compose_stop_output.services.webapp.webapp.state.running
+
+- name: Restart Docker compose app
+  community.docker.docker_compose:
+    project_src: "{{ docker_compose_app_path }}"
+    build: no
+    restarted: yes
+  register: docker_compose_restart_output
+
+- name: Debug output for `docker compose restart`
+  ansible.builtin.debug:
+    var: docker_compose_restart_output
+  when: debug
+
+- name: Check if containers of Docker compose application is restarted
+  ansible.builtin.assert:
+    that: docker_compose_restart_output.services.webapp.webapp.state.running

@@ -1,0 +1,7 @@
+---
+# defaults file for os-config
+disable_power_saver: true
+check_wifi_cron: true
+
+# checkwifi
+router_ip: 192.168.0.1
