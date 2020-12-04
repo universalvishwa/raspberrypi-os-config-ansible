@@ -9,7 +9,7 @@
 - This work is done as part of a Hobby project on setting up an IoT Stack in a Home network.
 - The playbooks aer configured to use _SSH Keys_ instead of username/password to connect to Raspberry Pi.
 - Pre-requisites:
-    - Add the SSH public key `id_rsa.pub` to `.home/pi/.ssh/authorized_keys` in Raspberry Pi.
+    - Add the SSH public key `id_rsa.pub` to `/home/pi/.ssh/authorized_keys` in Raspberry Pi.
 
 ## Ansible Roles
 1. **ping**:
@@ -29,6 +29,10 @@
     ```bash
     $ ansible-playbook -i hosts playbook.yml -l rpi
     ```
+
+#### Notes:
+- CI testing for **docker** role using Github Actions cannot be run directly. Because of _Docker-in-Docker_ scenario.
+    - User can always run the Molecule testing locally to test and verify the role.
 
 ## References
 - [Ansible Molecule Testing](https://github.com/universalvishwa/ansible-molecule-testing)
