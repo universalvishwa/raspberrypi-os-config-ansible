@@ -7,13 +7,13 @@
 - Playbooks are not developed with intention to run as a CI/CD pipeline. But can be integrated to a Github Workflow if needed.
 - CI Testing for Ansible roles is configured with Github Actions.
 - This work is done as part of a Hobby project on setting up an IoT Stack in a Home network.
-- The playbooks aer configured to use _SSH Keys_ instead of username/password to connect to Raspberry Pi.
+- The playbooks are configured to use _SSH Keys_ instead of username/password to connect to Raspberry Pi.
 - Pre-requisites:
     - Add the SSH public key `id_rsa.pub` to `/home/pi/.ssh/authorized_keys` in Raspberry Pi.
 
 ## Ansible Roles
 1. **ping**:
-    - This role is used to validate connectivity to Raspberry Pi.
+    - This role is used to test connectivity to Raspberry Pi.
 2. **docker**:
     - Install Docker and Docker Compose in `Armv7` or `Arm64` architectures.
 3. **os-config**:
