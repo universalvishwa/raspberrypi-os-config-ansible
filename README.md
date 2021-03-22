@@ -23,11 +23,11 @@
 ### Run Ansible playbooks
 1. Run Ansible ping
     ```bash
-    $ ansible-playbook -i hosts ansible_ping.yml -l rpi
+    $ ansible-playbook -i hosts.ini ansible_ping.yml -l rpi
     ```
 2. Run Ansible playbook to configure Raspberry Pi OS.
     ```bash
-    $ ansible-playbook -i hosts playbook.yml -l rpi
+    $ ansible-playbook -i hosts.ini playbook.yml -l rpi
     ```
 
 #### Notes:
