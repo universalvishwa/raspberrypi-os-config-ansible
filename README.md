@@ -53,3 +53,4 @@
 - [dockerpi](https://github.com/lukechilds/dockerpi)
 - [Does Your Raspberry Pi 3 Lose WiFi Connections After a While](http://qdosmsq.dunbar-it.co.uk/blog/2016/03/does-your-raspberry-pi-3-lose-wifi-connections-after-a-while/)
 - [Rebooting the Raspberry Pi when it loses wireless connection](https://weworkweplay.com/play/rebooting-the-raspberry-pi-when-it-loses-wireless-connection-wifi/)
+- [Ansible Playbook for Get Hosts Information](https://www.linuxtopic.com/2019/02/ansible-playbook-get-hosts-information.html)
