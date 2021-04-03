@@ -1,0 +1,28 @@
+# Nmap 7.91 scan initiated Sat Apr  3 17:38:42 2021 as: nmap -oG nmap_output 192.168.0.0/24
+Host: 192.168.0.1 ()	Status: Up
+Host: 192.168.0.1 ()	Ports: 21/filtered/tcp//ftp///, 22/filtered/tcp//ssh///, 23/filtered/tcp//telnet///, 80/open/tcp//http///, 443/open/tcp//https///, 5431/open/tcp//park-agent///, 8080/open/tcp//http-proxy///	Ignored State: closed (993)
+Host: 192.168.0.4 ()	Status: Up
+Host: 192.168.0.4 ()	Ports: 44443/filtered/tcp//coldfusion-auth///	Ignored State: closed (999)
+Host: 192.168.0.13 ()	Status: Up
+Host: 192.168.0.13 ()	Ports: 53/open/tcp//domain///, 49153/open/tcp//unknown///	Ignored State: closed (998)
+Host: 192.168.0.15 ()	Status: Up
+Host: 192.168.0.15 ()	Ports: 8008/open/tcp//http///, 8009/open/tcp//ajp13///, 8443/open/tcp//https-alt///, 9000/open/tcp//cslistener///, 10001/open/tcp//scp-config///	Ignored State: closed (995)
+Host: 192.168.0.19 ()	Status: Up
+Host: 192.168.0.19 ()	Ports: 5555/open/tcp//freeciv///, 8009/open/tcp//ajp13///, 9080/open/tcp//glrpc///	Ignored State: closed (997)
+Host: 192.168.0.20 ()	Status: Up
+Host: 192.168.0.20 ()	Ports: 49153/open/tcp//unknown///, 49155/open/tcp//unknown///, 49156/open/tcp//unknown///	Ignored State: closed (997)
+Host: 192.168.0.21 ()	Status: Up
+Host: 192.168.0.21 ()	Ports: 49153/open/tcp//unknown///, 49155/open/tcp//unknown///, 49156/open/tcp//unknown///	Ignored State: closed (997)
+Host: 192.168.0.23 ()	Status: Up
+Host: 192.168.0.23 ()	Ports: 53/open/tcp//domain///	Ignored State: closed (999)
+Host: 192.168.0.25 ()	Status: Up
+Host: 192.168.0.25 ()	Ports: 53/open/tcp//domain///, 49153/open/tcp//unknown///	Ignored State: closed (998)
+Host: 192.168.0.39 ()	Status: Up
+Host: 192.168.0.39 ()	Status: Up
+Host: 192.168.0.86 ()	Status: Up
+Host: 192.168.0.86 ()	Status: Up
+Host: 192.168.0.95 ()	Status: Up
+Host: 192.168.0.95 ()	Ports: 80/open/tcp//http///, 443/open/tcp//https///	Ignored State: closed (998)
+Host: 192.168.0.129 (pi)	Status: Up
+Host: 192.168.0.129 (pi)	Ports: 22/open/tcp//ssh///	Ignored State: closed (999)
+# Nmap done at Sat Apr  3 17:39:05 2021 -- 256 IP addresses (13 hosts up) scanned in 23.34 seconds

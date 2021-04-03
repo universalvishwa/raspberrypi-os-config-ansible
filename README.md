@@ -10,6 +10,11 @@
 - The playbooks are configured to use _SSH Keys_ instead of username/password to connect to Raspberry Pi.
 - Pre-requisites:
     - Add the SSH public key `id_rsa.pub` to `/home/pi/.ssh/authorized_keys` in Raspberry Pi.
+    - Find IP addresses of Raspberry Pis in home network.
+        ```bash
+        $ nmap -sn -p 22 <home_network_cidr> | grep pi
+        $ nmap -sV -p 22 192.168.0.0/24 –open | grep pi
+        ```
 
 ## Ansible Roles
 1. **ping**:
