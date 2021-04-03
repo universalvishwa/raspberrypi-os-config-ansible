@@ -1,0 +1,86 @@
+---
+- hosts: all
+  vars:
+    debug_enabled: false
+  tasks:
+    - name: gather info
+      setup: ~
+      register: host_info
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+    - debug: var=host_info
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+
+    - name: hostname
+      debug:
+        var: ansible_hostname
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+
+    - name: Default network interface info
+      set_fact:
+        interface_info:
+          ip_address: "{{ ansible_default_ipv4.address }}"
+          gateway: "{{ ansible_default_ipv4.gateway }}"
+          interface_name: "{{ ansible_default_ipv4.interface }}"
+    - debug: var=interface_info
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+
+    - name: Operating system and Kernel info
+      set_fact:
+        os_info:
+          os_distribution: "{{ ansible_distribution }}"
+          os_release: "{{ ansible_distribution_release }}"
+          os_distribution_version: "{{ ansible_distribution_version }}"
+          kernel_version: "{{ ansible_kernel }}"
+          cpu_architecture: "{{ ansible_architecture }}"
+    - debug: var=os_info
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+
+    - name: Hardware specifications
+      set_fact:
+        hardware_info:
+          cpu: "{{ ansible_processor }}"
+          core: "{{ ansible_processor_cores }}"
+          memory: "{{ ansible_memtotal_mb }}"
+          swap: "{{ ansible_memory_mb.swap.total }}"
+    - debug: var=hardware_info
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+
+    - name: Disk specifications
+      set_fact:
+        disk_info:
+          device: "{{ ansible_devices.keys() | first }}"
+          size: "{{ ansible_devices.sda.size }}"
+    - debug: var=disk_info
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
+
+    - name: Set system info fact
+      # run_once: yes
+      set_fact:
+        system_info:
+          hostname: "{{ ansible_hostname }}"
+          os_info: "{{ os_info }}"
+          network_info: "{{ interface_info }}"
+          hardware_info: "{{ hardware_info }}"
+          disk_info: "{{ disk_info }}"
+    - debug: var=system_info
+
+    - name: Output info to file
+      block:
+        - name: Delete existing file
+          delegate_to: localhost
+          run_once: yes
+          ignore_errors: yes
+          file:
+            state: absent
+            path: server_details.json
+        - name: Create file
+          file:
+            dest: server_details.json
+            state: touch
+          delegate_to: localhost
+        - name: Write system info to 'server_details.json' file
+          delegate_to: localhost
+          lineinfile:
+            dest: server_details.json
+            line: "{{ system_info | to_nice_json }}"
+      when: (debug_enabled is defined) and (debug_enabled|bool == true)
