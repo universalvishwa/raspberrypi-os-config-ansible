@@ -2,7 +2,7 @@
 - name: Configure Raspberry Pi
   hosts: all
   vars:
-    ansible_ver: 2.10.3
+    ansible_ver: 2.10.7
   pre_tasks:
     - name: Verify minimum Ansible version requirements.
       assert:
