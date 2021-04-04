@@ -11,7 +11,6 @@
     debug: false
     ci_testing: "{{ lookup('env', 'GITHUB_ACTIONS') | default(false, True) }}"
   tasks:
-    - debug: var=ci_testing
     - name: Verify OS distribution is 'Debian'
       assert:
         that: ansible_os_family == 'Debian'
