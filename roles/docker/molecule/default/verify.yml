@@ -9,16 +9,19 @@
     verify_docker_compose: true
     docker_compose_app_path: ~/webapp
     debug: false
+    ci_testing: "{{ lookup('env', 'GITHUB_ACTIONS') | default(false, True) }}"
   tasks:
+    - debug: var=ci_testing
     - name: Verify OS distribution is 'Debian'
       assert:
         that: ansible_os_family == 'Debian'
         fail_msg: "OS distribution must be 'Debian' to use with Raspberry Pi"
         success_msg: "OS distribution matches requirements of Raspberry Pi"
-
-    - name: Verify Docker
-      import_tasks: tests/verify_docker.yml
-
-    - name: Verify Docker Compose
-      import_tasks: tests/verify_docker_compose.yml
-      when: verify_docker_compose
+    - name: Run Docker tests
+      block:
+        - name: Verify Docker
+          import_tasks: tests/verify_docker.yml
+        - name: Verify Docker Compose
+          import_tasks: tests/verify_docker_compose.yml
+          when: verify_docker_compose
+      when: ci_testing
