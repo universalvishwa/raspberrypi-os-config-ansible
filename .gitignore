@@ -130,3 +130,4 @@ dmypy.json
 
 # Ignore Ansble hosts file
 hosts.ini
+gcp_hosts.ini

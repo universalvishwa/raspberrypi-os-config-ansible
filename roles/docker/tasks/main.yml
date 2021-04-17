@@ -1,5 +1,5 @@
 ---
-- name: Gather the package facts
+- name: Gather package facts
   package_facts:
     manager: auto
 
@@ -39,6 +39,12 @@
     state: started
     enabled: yes
   tags: [docker, install]
+
+- name: Upgrade Python-Pip
+  pip:
+    name: pip
+    state: latest
+    executable: "{{ docker_pip_executable }}"
 
 - name: Install Docker Compose using Pip
   pip:
