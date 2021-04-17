@@ -1,0 +1,4 @@
+---
+# .ansible-lint
+skip_list:  # or 'warn_list' to silence them as warnings
+  - '403'  # Package installs should not use latest
