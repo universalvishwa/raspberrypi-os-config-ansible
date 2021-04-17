@@ -131,3 +131,6 @@ dmypy.json
 # Ignore Ansble hosts file
 hosts.ini
 gcp_hosts.ini
+
+# NMAP output files
+nmap_output
